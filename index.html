@@ -1,0 +1,55 @@
+<!-- Title of the game -->
+<h1>Guess the number</h1>
+
+<!-- Input box to enter the guessed number -->
+<input id="gn">
+
+<!-- Button to check the guess -->
+<button onclick="newgame()">check</button>
+
+<!-- Paragraph to show if the guess is correct or wrong -->
+<p id="result">You are wrong/right</p>
+
+<!-- Paragraph to display the current score -->
+<p id="score">SCORE=10</p>
+
+<script>
+  // Get the input element where user enters a number
+  var g_n = document.getElementById("gn");
+
+  // Get the result display element
+  var re = document.getElementById("result");
+
+  // Get the score display element
+  var s = document.getElementById("score");
+
+  // Generate a random number between 1 and 10 (inclusive)
+  var r_n = Math.floor(Math.random() * 10) + 1;
+
+  // Initialize total score to 10
+  var t_s = 10;
+
+  // Function that runs when the "check" button is clicked
+  function newgame() {
+    // Get the user's entered number (as a string)
+    var e_n = g_n.value;
+
+    // Compare the entered number with the random number
+    if (r_n == e_n) {
+      // If correct, show "Right" message
+      re.textContent = "Right";
+
+      // Show a popup message
+      alert("You Won");
+    } else {
+      // If wrong, subtract 1 from score
+      t_s = t_s - 1;
+
+      // Display "Wrong" message
+      re.textContent = "Wrong";
+
+      // Update the score on the page
+      s.textContent = "Score=" + t_s;
+    }
+  }
+</script>
